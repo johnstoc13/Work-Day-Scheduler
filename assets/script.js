@@ -27,7 +27,7 @@ $(document).ready(function(){
     function setTimeColor() {
         let currentTime = moment().hour();
         $(".hour").each(function(){
-            if (currentTime < $(this).data("hour")) {
+            if (currentTime < $(this).data("hour")) { 
                 $(this).siblings().addClass("future");
             } else if (currentTime == $(this).data("hour")) {
                 $(this).siblings().addClass("present");
@@ -37,25 +37,46 @@ $(document).ready(function(){
         })
     }
 
+    let taskArray = [];
     // Set event listeners to save buttons
-    $(".saveBtn").on("click", function(event) {
-        let taskArray = {};
-        $(".text-body").each(function(currentIndex, currentEl) {
+    $(".saveBtn").on("click", function (event) {
+        $(".text-body").each(function (currentIndex, currentEl) {
             taskArray[currentIndex] = $(currentEl).val().trim();
         });
         console.log(taskArray);
+        storeTasks();
     })
 
-    // Load tasks from local storage
+    // Store tasks into localStorage
+    function storeTasks() {
+        localStorage.setItem("taskArray", JSON.stringify(taskArray));
+    }
+
+
+
+    
+    // Load tasks from localStorage
     function loadTasks() {
         const storedTasks = JSON.parse(localStorage.getItem("taskArray"));
         if (storedTasks) {
             taskArray = storedTasks;
+        } else {
+            taskArray = JSON.parse(taskArray);
         }
-    };
+        // Loop through and display on page
+        for (var i = 0; i <taskArray.length; i++) {
+            
+        }
+    }
 
 
 
+
+    // $(".save-btn").on("click", function () {
+    //     var task = $(this).parent("textArea").val();
+    //     var time = $(this).siblings("div").attr("id");
+    //     localStorage.setItem(time, note);
+    // })
 
 
 
