@@ -38,44 +38,59 @@ $(document).ready(function(){
         })
     }
     
-    let taskArray = ["", "", "", "", "", "", "", "", ""];
-    // let taskArray = [];
+    let taskArray = [];
+    let task;
+    let time;
+    let textArea = $(".text-body");
+
+    // Create an array to access each time column ID
+    // Load tasks from localStorage
+    function writeTasks() {
+        textArea.each(function (index) {
+            console.log(taskArray[index]);
+            $(this).val(taskArray[index]);
+            console.log(index);
+        })
+    }
+
+
     console.log(taskArray);
     // get localStorage 1st and set to a variable
     // Load tasks from localStorage
     function loadTasks() {
         let storedTasks = JSON.parse(localStorage.getItem("storedTasks"));
+
         if (!storedTasks) {
+            taskArray = ["", "", "", "", "", "", "", "", ""];
             storedTasks = taskArray;
-        }
-        // Loop through and display on page
-        for (var i = 0; i <taskArray.length; i++) {
-        }
+            console.log("stored task is nullll");
+            localStorage.setItem("storedTasks", JSON.stringify(taskArray));
+        } else {
+            taskArray = storedTasks;
+            console.log("stored tasks ok!");
+                }
+        writeTasks();
+        
+        // // Loop through and display on page
+        // for (var i = 0; i <taskArray.length; i++) {
+        // }
     }
 
-    let task;
-    let time;
-    // Create an array to access each time column ID
-    // Load tasks from localStorage
-    function storeTasks() {
-        $eventColumn.each(function (index) {
-            $(this).val(taskArray[index]);
-            console.log(index);
-        })
-    }
     
     $(".saveBtn").on("click", function () {
         task = $(this).siblings("input").val();
-        time = $(this).siblings("div").attr("id");
+        time = parseInt($(this).siblings("div").attr("id"));
         console.log(task, time);
+        console.log(taskArray);
         taskArray[time] = task;
         localStorage.setItem("storedTasks", JSON.stringify(taskArray));
-        console.log(taskArray);
+        
+        console.log("this is the save button", taskArray);
     })
 
     // Call function when page opens or refreshes
     setTimeColor();
     loadTasks();
-    storeTasks();
+    
 
 })
