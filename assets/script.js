@@ -38,59 +38,43 @@ $(document).ready(function(){
         })
     }
     
+    // More variables needed
     let taskArray = [];
     let task;
     let time;
     let textArea = $(".text-body");
 
-    // Create an array to access each time column ID
-    // Load tasks from localStorage
+    // Create an array to access each time column ID and write tasks to page
     function writeTasks() {
         textArea.each(function (index) {
-            console.log(taskArray[index]);
             $(this).val(taskArray[index]);
-            console.log(index);
         })
     }
 
-
-    console.log(taskArray);
-    // get localStorage 1st and set to a variable
-    // Load tasks from localStorage
+    // Get localStorage and set to a variable, then write to page
     function loadTasks() {
         let storedTasks = JSON.parse(localStorage.getItem("storedTasks"));
 
         if (!storedTasks) {
             taskArray = ["", "", "", "", "", "", "", "", ""];
             storedTasks = taskArray;
-            console.log("stored task is nullll");
             localStorage.setItem("storedTasks", JSON.stringify(taskArray));
         } else {
             taskArray = storedTasks;
-            console.log("stored tasks ok!");
                 }
         writeTasks();
-        
-        // // Loop through and display on page
-        // for (var i = 0; i <taskArray.length; i++) {
-        // }
     }
 
-    
+    // Event listener for save buttons
     $(".saveBtn").on("click", function () {
         task = $(this).siblings("input").val();
         time = parseInt($(this).siblings("div").attr("id"));
-        console.log(task, time);
-        console.log(taskArray);
         taskArray[time] = task;
         localStorage.setItem("storedTasks", JSON.stringify(taskArray));
-        
-        console.log("this is the save button", taskArray);
     })
 
     // Call function when page opens or refreshes
     setTimeColor();
     loadTasks();
     
-
 })
