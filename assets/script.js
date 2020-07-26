@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     // Loop through 9 hours schedule and create elements
     // Cited:  Worked with tutor here
@@ -6,9 +6,9 @@ $(document).ready(function(){
     for (var i = 9; i < 18; i++) {
         let $timeColumn;
         if (i < 12) {
-            $timeColumn = $("<div>").addClass("col-1 time hour text-right").attr("id", i - 9).text(i + "AM").data("hour", i);    
+            $timeColumn = $("<div>").addClass("col-1 time hour text-right").attr("id", i - 9).text(i + "AM").data("hour", i);
         } else if (i == 12) {
-            $timeColumn = $("<div>").addClass("col-1 time hour text-right").attr("id", i - 9).text(i + "PM").data("hour", i); 
+            $timeColumn = $("<div>").addClass("col-1 time hour text-right").attr("id", i - 9).text(i + "PM").data("hour", i);
         } else {
             $timeColumn = $("<div>").addClass("col-1 time hour text-right").attr("id", i - 9).text((i - 12) + "PM").data("hour", i);
         }
@@ -35,9 +35,9 @@ $(document).ready(function(){
             } else {
                 $(this).siblings().addClass("past");
             }
-        })
+        });
     }
-    
+
     // More variables needed
     let taskArray = [];
     let task;
@@ -48,7 +48,7 @@ $(document).ready(function(){
     function writeTasks() {
         textArea.each(function (index) {
             $(this).val(taskArray[index]);
-        })
+        });
     }
 
     // Get localStorage and set to a variable, then write to page
@@ -61,7 +61,7 @@ $(document).ready(function(){
             localStorage.setItem("storedTasks", JSON.stringify(taskArray));
         } else {
             taskArray = storedTasks;
-                }
+        }
         writeTasks();
     }
 
@@ -71,10 +71,10 @@ $(document).ready(function(){
         time = parseInt($(this).siblings("div").attr("id"));
         taskArray[time] = task;
         localStorage.setItem("storedTasks", JSON.stringify(taskArray));
-    })
+    });
 
     // Call function when page opens or refreshes
     setTimeColor();
     loadTasks();
-    
-})
+
+});
