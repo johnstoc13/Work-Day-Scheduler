@@ -7,11 +7,17 @@ This project includes an application that offers a one day planning calendar for
 ## Requirements
 
 Functional, deployed application
+
 GitHub repository with README describing the project
+
 Daily planner displaying current day at the top of the calendar
+
 Timeblocks for standard business hours, color coded indicating past, present, and future
+
 Ability to enter an event into timeblock and save
+
 Events are saved into local storage
+
 When page refreshes, saved events persist
 
 
