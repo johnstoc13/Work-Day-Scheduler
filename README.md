@@ -29,6 +29,20 @@ The website can be reached here:  https://johnstoc13.github.io/Work-Day-Schedule
 
 This Work Day Scheduler was built using jQuery, Bootstrap and Font Awesome. I found the localStorage part to be particularly challenging, but I was able to get help from my tutor and many study groups. I had to console.log many different items along the way to ensure each piece was working before moving on to the next function.
 
+## Resources
+
+Bootstrap CSS Framework - https://getbootstrap.com/
+
+jQuery Javascript Library - https://jquery.com/
+
+Moment JS - https://momentjs.com/
+
+Font Awesome - https://fontawesome.com/
+
 ## Images
 
 <img width="1069" alt="Screen Shot 2020-07-26 at 11 04 51 AM" src="https://user-images.githubusercontent.com/66090689/88482997-e1b0db80-cf32-11ea-9d4e-51798e89d0c2.png">
+
+## Contact
+
+Email: chasej@live.com
